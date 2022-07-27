@@ -2,12 +2,11 @@
 #define GPIO_H_
 
 
-#include "HardWare_GPIO.h"
-#include "HardWare_Type.h"
+#include "Hw_MCU.h"
+#include "IntCtrl.h"
 
 
 void Port_Dir(uint32_t port , uint8_t dir);
-//void Pin_Dir(uint32_t port , uint8_t dir, uint8_t pin);
 void Wr_Pin(uint32_t port , uint8_t pin , uint8_t value);
 
 

@@ -1,5 +1,15 @@
+/*******************************************************************************
+*====================== Auther: Ahmed Omar  ====================================
+=======================   Date:17/7/2022    ====================================
+============   function responsible for configration    ========================
+=================  general perpose input output ================================
+*******************************************************************************/                 
 #include "GPIO.h"
 
+
+/*==========================================================================
+ *                         diraction of all port 
+ *==========================================================================*/
 
 void Port_Dir(uint32_t port , uint8_t dir)
 {
@@ -12,19 +22,10 @@ void Port_Dir(uint32_t port , uint8_t dir)
        hardWare_reading(port+R_GPIO_DIROffset) 		= 0xFF;
     }
 }
-/*
-void Configration_Pin(uint32_t port , uint8_t dir, uint8_t pin)
-{
-    if(dir == INPUT)
-    {
-      hardWare_reading(port+R_GPIO_DIROffset) 		= pin;
-    }
-    else if(dir == OUTPUT)
-    {
-       hardWare_reading(port+R_GPIO_DIROffset) 		= pin;
-    }
-}
-*/
+
+/*==========================================================================
+ *                            Write on pin
+ *==========================================================================*/
 void Wr_Pin(uint32_t port , uint8_t pin , uint8_t value)
 {
     if(value == HIGH)
@@ -37,7 +38,9 @@ void Wr_Pin(uint32_t port , uint8_t pin , uint8_t value)
     }
 }
 
-
+/*==========================================================================
+ *              all configration in one function of output gpio pin 
+ *==========================================================================*/
 void Config_Port_Out(uint32_t port, uint8_t pin)
 {
   hardWare_reading(port+R_GPIO_DIROffset) 	  	|=(1<<pin);
@@ -48,7 +51,9 @@ void Config_Port_Out(uint32_t port, uint8_t pin)
   //hardWare_reading(port+R_GPIO_PuDownOffset)      |=(1<<pin);  //= 0xFF;
 }
 
-
+/*==========================================================================
+ *              all configration in one function of input gpio pin 
+ *==========================================================================*/
 void Config_Port_In(uint32_t port, uint8_t pin)
 {
   hardWare_reading(port+R_GPIO_DIROffset) 		&=~(1<<pin);
@@ -60,7 +65,7 @@ void Config_Port_In(uint32_t port, uint8_t pin)
 }
 
 /*******************************************************
- * * sense
+ * * sense for input switch
  * *****************************************************/
 void Sens_Pin(uint32_t port , uint8_t pin, uint8_t cond)
 {
@@ -75,7 +80,7 @@ void Sens_Pin(uint32_t port , uint8_t pin, uint8_t cond)
 }
 
 /*******************************************************
- * * edge
+ * * edge for input switch
  * *****************************************************/
 void Edge_Pin(uint32_t port , uint8_t pin, uint8_t cond)
 {
@@ -90,7 +95,7 @@ void Edge_Pin(uint32_t port , uint8_t pin, uint8_t cond)
 }
 
 /*******************************************************
- * * event
+ * * event for input switch
  * *****************************************************/
 void Event_Pin(uint32_t port , uint8_t pin, uint8_t cond)
 {
@@ -105,7 +110,7 @@ void Event_Pin(uint32_t port , uint8_t pin, uint8_t cond)
 }
 
 /*******************************************************
- * * mask
+ * * mask for input switch
  * *****************************************************/
 void Mask_Pin(uint32_t port , uint8_t pin, uint8_t cond)
 {
@@ -119,7 +124,7 @@ void Mask_Pin(uint32_t port , uint8_t pin, uint8_t cond)
   }
 }
 /*******************************************************
- * * clear
+ * * clear for input switch
  * *****************************************************/
 void Clear_Pin(uint32_t port , uint8_t pin, uint8_t cond)
 {
