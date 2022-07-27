@@ -8,9 +8,16 @@
 #define  HW_MCU_H_
 #include <stdint.h>
 
+/*==========================================================================
+ *                 defination for addrasses for contral
+ *==========================================================================*/
 #define systemCtrl  0x400FE000
 #define Hw_Mask     0x3FC
 
+/*==========================================================================
+ *                 defination for interrupt addrasse 
+ *==========================================================================*/
+#define R_INTERRUPT             0xE000E000
 /*******************************************************
  * ***************  APB GPIO ***************************
  *  datasheet tiva c page   658:659
@@ -59,6 +66,20 @@
 #define R_GPIO_Int_MaskOffset   0x410     // page 667
 #define R_GPIO_Int_ClrOffset    0x41C     // page 670
 #define R_GPIO_Int_StatOffset   0x418     // page 669
+
+#define Interrupt_31_Set_Offset  	  0x100
+#define Interrupt_63_Set_Offset  	  0x104
+#define Interrupt_95_Set_Offset   	  0x108
+#define Interrupt_127_Set_Offset   	  0x10C
+
+
+#define Interrupt_31_Clear_Offset  	  0x180
+#define Interrupt_63_Clear_Offset     0x184
+#define Interrupt_95_Clear_Offset     0x188
+#define Interrupt_127_Clear_Offset    0x18C
+
+#define Interrupt_28_31_Periorty_Offset  0x41C      // PortF
+#define Interrupt_20_23_Periorty_Offset  0x414      // timerA
 
 
 /******************************************************
