@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "intictrl.h": "c",
+        "hw_mcu.h": "c"
+    }
+}

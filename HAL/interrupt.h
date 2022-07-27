@@ -9,7 +9,7 @@
 #define INTERRUPT_H_
 
 #include "Hw_MCU.h"
-#include "IntCtrl.h"
+#include "IntiCtrl.h"
 
 
 /*==========================================================================

@@ -10,7 +10,7 @@
 
 
 #include "Hw_MCU.h"
-#include "IntCtrl.h"
+#include "IntiCtrl.h"
 
 
 void Port_Dir(uint32_t port , uint8_t dir);
