@@ -14,7 +14,6 @@
  *      					   Include files
  *==========================================================================*/
 #include"app.h"
-//#include <tm4c123gh6pm.h>
 
 
 
@@ -22,7 +21,7 @@
  *      					   Global Variables
  *==========================================================================*/	
 
-uint8_t Ref 	= 0;
+uint32_t Ref 	= 0;
 uint8_t set 	= 0;
 uint8_t On 		= 0;
 uint8_t Off 	= 0;
@@ -34,7 +33,7 @@ int main (void)
  *         intializing  pin 1, 2, and 3 in port F as output GPIO
  *==========================================================================*/	
 	initPin(GPIO_PF, 1,OUTPUT);
-    initPin(GPIO_PF, 2,OUTPUT);
+	initPin(GPIO_PF, 2,OUTPUT);
 	initPin(GPIO_PF, 3,OUTPUT);
 
 /*==========================================================================
@@ -95,11 +94,12 @@ void TIMER1A_Handler(void)
 {
 	
 	Ref++;
-	if(Ref <= (On * 1000))
+	
+	if(Ref <= (On*1000))
 	{
 		Wr_Pin(GPIO_PF,2,HIGH);
 	}
-	else if (Ref > On && Ref <= ((On + Off) * 1000))
+	else if (Ref > (On*1000) && Ref <= ((Off+On)*1000))
 	{
 			Wr_Pin(GPIO_PF,2,LOW);
 	}
@@ -161,5 +161,3 @@ void GPIOF_Handler(void)
 			
 }
 		
-			
-	
