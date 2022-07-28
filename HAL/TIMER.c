@@ -75,3 +75,34 @@ void Int_Msk_Timer(uint32_t adr, uint8_t val)
 {
     hardWare_reading(adr+R_TIMER_IMOffset) = (val<<0);
 }
+
+
+/*==========================================================================
+ *                           interrupt mask Status
+ *==========================================================================*/
+volatile uint32_t Int_Msk_Stat_Timer(uint32_t adr)
+{
+    return hardWare_reading(adr+R_TIMER_IMSOffset);
+}
+
+uint32_t Set_value_Blinking(uint32_t adr, uint8_t O_val, uint8_t F_val, uint32_t Ref)
+{
+    
+    Ref++;
+    if(Ref <= (O_val*1000))
+    {
+        Wr_Pin(adr,2,HIGH);
+    }
+    else if (Ref > (O_val * 1000) && Ref <= ((F_val + O_val) * 1000))
+    {
+            Wr_Pin(adr,2,LOW);
+    }
+    else
+    {
+            Ref = 0;
+    }
+
+    return Ref;
+			
+}		
+

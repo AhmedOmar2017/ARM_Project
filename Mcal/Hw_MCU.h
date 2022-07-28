@@ -107,6 +107,7 @@
 #define R_TIMER_B_MODOffset             0x008     // page 729
 #define R_TIMER_CTRLOffset              0x00C     // page 737
 #define R_TIMER_IMOffset                0x018     // page 745
+#define R_TIMER_IMSOffset               0x020     // page 745
 #define R_TIMER_ICOffset                0x024     // page 753
 #define R_TIMER_A_ILOffset              0x028     // page 756
 #define R_TIMER_B_ILOffset              0x02C     // page 757

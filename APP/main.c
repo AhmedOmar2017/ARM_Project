@@ -15,16 +15,15 @@
  *==========================================================================*/
 #include"app.h"
 
-
-
 /*==========================================================================
  *      					   Global Variables
  *==========================================================================*/	
 
-uint32_t Ref 	= 0;
+
 uint8_t set 	= 0;
 uint8_t On 		= 0;
 uint8_t Off 	= 0;
+uint32_t Ref	= 0;
 
 int main (void)
 
@@ -79,7 +78,7 @@ int main (void)
 	Enable_NVIC(Interrupt_31_Set_Offset, 21);
 	
 
-
+	
     while(1)
     {    
     }
@@ -92,24 +91,11 @@ int main (void)
 
 void TIMER1A_Handler(void)
 {
-	
-	Ref++;
-	
-	if(Ref <= (On*1000))
-	{
-		Wr_Pin(GPIO_PF,2,HIGH);
-	}
-	else if (Ref > (On*1000) && Ref <= ((Off+On)*1000))
-	{
-			Wr_Pin(GPIO_PF,2,LOW);
-	}
-	else
-	{
-			Ref = 0;
-	}
-		Int_Clr_Timer(TIMER_1_D, Enable);
-		
+	Ref = Set_value_Blinking(GPIO_PF,On, Off, Ref);
+	Int_Clr_Timer(TIMER_1_D, Enable);
 }
+
+
 
 
 
