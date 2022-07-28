@@ -9,9 +9,18 @@
 * exit for set mode and reset the on and off time 
 * Sw2 to set values of on and off      
 *******************************************************************************/
+
+/*==========================================================================
+ *      					   Include files
+ *==========================================================================*/
 #include"app.h"
 //#include <tm4c123gh6pm.h>
 
+
+
+/*==========================================================================
+ *      					   Global Variables
+ *==========================================================================*/	
 
 uint8_t Ref 	= 0;
 uint8_t set 	= 0;
@@ -57,20 +66,30 @@ int main (void)
 	
 		
 /*==========================================================================
- *             intializing  pin 0  in port F as Interrupt
+ *        Intializing  priorty for GPIO prot F and enable interrupt 
+ *		  					priorty of port F is 1
  *==========================================================================*/			
 	Periorty_NVIC(Interrupt_28_31_Periorty_Offset, 0x00200000);		
 	Enable_NVIC(Interrupt_31_Set_Offset,30);
 		
 		
-	
+/*==========================================================================
+ *        		Intializing  the timer 1 and enable interrupt 
+ *==========================================================================*/			
 	InitTimer(TIMER_1_D, T16, Periodic, 250, 200, Enable, Enable); 
 	Enable_NVIC(Interrupt_31_Set_Offset, 21);
 	
+
+
     while(1)
     {    
     }
 }
+
+
+/*==========================================================================
+ *      					  Timer handler interrupt
+ *==========================================================================*/
 
 void TIMER1A_Handler(void)
 {
@@ -92,6 +111,11 @@ void TIMER1A_Handler(void)
 		
 }
 
+
+
+/*==========================================================================
+ *      					  GPIO port F handler interrupt
+ *==========================================================================*/
 void GPIOF_Handler(void)
 {
 	
